@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDART_REQUIRED ON)
 
 set(SOURCE_FILES
   src/reader/buffer.cc
+  src/reader/file_reader.cc
 )
 
 enable_testing()
