@@ -26,6 +26,10 @@ size_t Buffer::size() const {
   return size_;
 }
 
+bool Buffer::empty() const {
+  return (size_ == 0);
+}
+
 char Buffer::operator[](size_t position) const {
   return data_[position];
 }

@@ -1,8 +1,6 @@
 #ifndef YALPCONF_SRC_READER_BUFFER_H_
 #define YALPCONF_SRC_READER_BUFFER_H_
 
-#include <iostream>
-
 namespace yalpconf {
 
 class Buffer {
@@ -12,6 +10,7 @@ class Buffer {
 
     char* data();
     size_t size() const;
+    bool empty() const;
     char operator[](size_t position) const;
   private:
     size_t size_;
