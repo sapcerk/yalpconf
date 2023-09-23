@@ -4,10 +4,16 @@
 
 #include "reader/buffer.h"
 
-TEST(BufferTests, TestBufferSize) {
+TEST(BufferTests, TestBufferSizeNoEmpty) {
   const size_t size = 4;
   yalpconf::Buffer buffer(size);
   ASSERT_EQ(buffer.size(), size);
+  ASSERT_EQ(buffer.empty(), false);
+}
+
+TEST(BufferTests, TestBufferEmpty) {
+  yalpconf::Buffer buffer(0);
+  ASSERT_EQ(buffer.empty(), true);
 }
 
 TEST(BufferTests, TestBufferWrite) {
