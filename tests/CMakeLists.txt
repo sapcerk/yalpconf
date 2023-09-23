@@ -23,4 +23,4 @@ target_link_libraries(
 )
 
 include(GoogleTest)
-gtest_discover_tests(${PROJECT_NAME}_test)
+gtest_discover_tests(${PROJECT_NAME}_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
