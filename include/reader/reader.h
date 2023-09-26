@@ -7,6 +7,7 @@ namespace yalpconf {
 
 class Reader {
   public:
+    virtual ~Reader() = default;
     virtual Buffer ReadConfiguration() = 0;
 };
 

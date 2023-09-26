@@ -11,6 +11,7 @@ namespace yalpconf {
 class FileReader : public Reader {
   public:
     explicit FileReader(const std::string& file_name);
+    ~FileReader() = default;
     Buffer ReadConfiguration() override;
   private:
     const std::string file_name_;
