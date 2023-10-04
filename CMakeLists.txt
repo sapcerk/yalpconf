@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDART 20)
 set(CMAKE_CXX_STANDART_REQUIRED ON)
 
 set(SOURCE_FILES
-  src/reader/buffer.cc
-  src/reader/file_reader.cc
+  src/error.cc
+  src/reader/blocking_file_reader.cc
+  src/reader/string_reader.cc
+  src/lexical_analyzer/blocking_lexical_analyzer.cc
 )
 
 enable_testing()
