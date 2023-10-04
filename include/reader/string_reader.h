@@ -11,7 +11,7 @@ namespace yalpconf {
 class StringReader : public Reader {
   public:
     StringReader(const std::string& input_str);
-    StringReader(std::string&& input_str);
+    StringReader(std::string&& input_str) noexcept;
     ~StringReader() = default;
     Error ReadConfiguration() override;
     bool empty() const override;

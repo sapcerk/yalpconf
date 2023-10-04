@@ -9,7 +9,7 @@ namespace yalpconf {
 StringReader::StringReader(const std::string& input_str) 
     : input_str_ { input_str }, next_symbol_position_ { 0 } {};
 
-StringReader::StringReader(std::string&& input_str) 
+StringReader::StringReader(std::string&& input_str) noexcept 
     : input_str_ { std::move(input_str) }, next_symbol_position_ { 0 } {};
   
 Error StringReader::ReadConfiguration() {
