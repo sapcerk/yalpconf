@@ -1,5 +1,5 @@
-#ifndef YALPCONF_SRC_READER_STRING_READER_H_
-#define YALPCONF_SRC_READER_STRING_READER_H_
+#ifndef YALPCONF_INCLUDE_READER_STRING_READER_H_
+#define YALPCONF_INCLUDE_READER_STRING_READER_H_
 
 #include <string>
 
@@ -24,4 +24,4 @@ class StringReader : public Reader {
 
 } // namespace yalpconf
 
-#endif // YALPCONF_SRC_READER_STRING_READER_H_
+#endif // YALPCONF_INCLUDE_READER_STRING_READER_H_

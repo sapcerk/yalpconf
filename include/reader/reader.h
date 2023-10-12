@@ -1,5 +1,5 @@
-#ifndef YALPCONF_SRC_READER_READER_H_
-#define YALPCONF_SRC_READER_READER_H_
+#ifndef YALPCONF_INCLUDE_READER_READER_H_
+#define YALPCONF_INCLUDE_READER_READER_H_
 
 #include "error.h"
 
@@ -16,5 +16,4 @@ class Reader {
 
 } // namespace yalpconf
 
-
-#endif // YALPCONF_SRC_READER_READER_H_
+#endif // YALPCONF_INCLUDE_READER_READER_H_
