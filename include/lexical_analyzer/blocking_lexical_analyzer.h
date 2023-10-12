@@ -1,5 +1,5 @@
-#ifndef YALPCONF_SRC_LEXICAL_ANALYZER_BLOCKING_LEXICAL_ANALYZER_H_
-#define YALPCONF_SRC_LEXICAL_ANALYZER_BLOCKING_LEXICAL_ANALYZER_H_
+#ifndef YALPCONF_INCLUDE_LEXICAL_ANALYZER_BLOCKING_LEXICAL_ANALYZER_H_
+#define YALPCONF_INCLUDE_LEXICAL_ANALYZER_BLOCKING_LEXICAL_ANALYZER_H_
 
 #include <memory>
 #include <string>
@@ -17,8 +17,8 @@ class BlockingLexicalAnalyzer : public LexicalAnalyzer {
     ~BlockingLexicalAnalyzer() = default;
     Error ScanTokens() override;
     bool empty() const override;
-    Token TakeNextToken() const override;
-    Token CheckNextToken() const override;
+    const Token& TakeNextToken() const override;
+    const Token& CheckNextToken() const override;
   private:
     std::vector<Token> tokens_;
     std::string current_token_;
@@ -41,4 +41,4 @@ class BlockingLexicalAnalyzer : public LexicalAnalyzer {
 
 } // namespace yalpconf
 
-#endif // YALPCONF_SRC_LEXICAL_ANALYZER_BLOCKING_LEXICAL_ANALYZER_H_
+#endif // YALPCONF_INCLUDE_LEXICAL_ANALYZER_BLOCKING_LEXICAL_ANALYZER_H_

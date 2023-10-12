@@ -1,5 +1,5 @@
-#ifndef YALPCONF_SRC_LEXICAL_ANALYZER_LEXICAL_ANALYZER_H_
-#define YALPCONF_SRC_LEXICAL_ANALYZER_LEXICAL_ANALYZER_H_
+#ifndef YALPCONF_INCLUDE_LEXICAL_ANALYZER_LEXICAL_ANALYZER_H_
+#define YALPCONF_INCLUDE_LEXICAL_ANALYZER_LEXICAL_ANALYZER_H_
 
 #include <memory>
 
@@ -16,12 +16,12 @@ class LexicalAnalyzer {
     virtual ~LexicalAnalyzer() = default;
     virtual Error ScanTokens() = 0;
     virtual bool empty() const = 0;
-    virtual Token TakeNextToken() const = 0;
-    virtual Token CheckNextToken() const = 0;
+    virtual const Token& TakeNextToken() const = 0;
+    virtual const Token& CheckNextToken() const = 0;
   protected:
     std::unique_ptr<const Reader> reader_;
 };
 
 } // namespace yalpconf
 
-#endif // YALPCONF_SRC_LEXICAL_ANALYZER_LEXICAL_ANALYZER_H_
+#endif // YALPCONF_INCLUDE_LEXICAL_ANALYZER_LEXICAL_ANALYZER_H_

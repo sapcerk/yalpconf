@@ -16,7 +16,7 @@ BlockingLexicalAnalyzer::BlockingLexicalAnalyzer(std::unique_ptr<const Reader> r
       next_token_position_ { 0 } {};
 
 void BlockingLexicalAnalyzer::AddToken(TokenType token_type) {
-    tokens_.emplace_back(Token(token_type, std::move(current_token_)));
+    tokens_.emplace_back(Token(token_type, std::move(current_token_), line_));
     current_token_.clear();
 }
 
@@ -183,11 +183,11 @@ bool BlockingLexicalAnalyzer::empty() const {
   return next_token_position_ >= tokens_.size();
 }
 
-Token BlockingLexicalAnalyzer::CheckNextToken() const {
+const Token& BlockingLexicalAnalyzer::CheckNextToken() const {
   return tokens_[next_token_position_];
 }
 
-Token BlockingLexicalAnalyzer::TakeNextToken() const {
+const Token& BlockingLexicalAnalyzer::TakeNextToken() const {
   return tokens_[next_token_position_++];
 }
 
