@@ -41,59 +41,84 @@ TEST(ErrorTests, TestConstructors) {
   ASSERT_EQ(error5.GetCode(), error_code5);
   ASSERT_EQ(error5.GetLine(), line_number5);
   ASSERT_EQ(error5.GetNearString(), near_string5);
+
+  const yalpconf::ErrorCode error_code6 = yalpconf::ErrorCode::UnexpectedSymbol;
+  const size_t line_number6 = 100;
+  const std::string near_string6 { "near" };
+  const std::string expected_string6 { "expected" };
+  yalpconf::Error error6 = yalpconf::Error(error_code6, line_number6, 
+      near_string6, expected_string6);
+  ASSERT_EQ(error6.GetCode(), error_code6);
+  ASSERT_EQ(error6.GetLine(), line_number6);
+  ASSERT_EQ(error6.GetNearString(), near_string6);
+  ASSERT_EQ(error6.GetExpectedString(), expected_string6);
 }
 
 TEST(ErrorTests, TestCopyMove) {
   const yalpconf::ErrorCode error_code_none = yalpconf::ErrorCode::None;
   const size_t line_number_none = 0;
   const std::string near_string_none;
+  const std::string expected_string_none;
   const yalpconf::ErrorCode error_code = yalpconf::ErrorCode::UnexpectedSymbol;
   const size_t line_number = 100;
-  const std::string near_string { "test" };
-  yalpconf::Error error = yalpconf::Error(error_code, line_number, near_string);
+  const std::string near_string { "near" };
+  const std::string expected_string { "expected" };
+  yalpconf::Error error = yalpconf::Error(error_code, line_number, 
+      near_string, expected_string);
   ASSERT_EQ(error.GetCode(), error_code);
   ASSERT_EQ(error.GetLine(), line_number);
   ASSERT_EQ(error.GetNearString(), near_string);
+  ASSERT_EQ(error.GetExpectedString(), expected_string);
   // copy constructor
   yalpconf::Error error_cc(error);
   ASSERT_EQ(error.GetCode(), error_code);
   ASSERT_EQ(error.GetLine(), line_number);
   ASSERT_EQ(error.GetNearString(), near_string);
+  ASSERT_EQ(error.GetExpectedString(), expected_string);
   ASSERT_EQ(error_cc.GetCode(), error_code);
   ASSERT_EQ(error_cc.GetLine(), line_number);
   ASSERT_EQ(error_cc.GetNearString(), near_string);
+  ASSERT_EQ(error_cc.GetExpectedString(), expected_string);
   // copy assigment
   yalpconf::Error error_ca;
   ASSERT_EQ(error_ca.GetCode(), error_code_none);
   ASSERT_EQ(error_ca.GetLine(), line_number_none);
   ASSERT_EQ(error_ca.GetNearString(), near_string_none);
+  ASSERT_EQ(error_ca.GetExpectedString(), expected_string_none);
   error_ca = error_cc;
   ASSERT_EQ(error_cc.GetCode(), error_code);
   ASSERT_EQ(error_cc.GetLine(), line_number);
   ASSERT_EQ(error_cc.GetNearString(), near_string);
+  ASSERT_EQ(error_cc.GetExpectedString(), expected_string);
   ASSERT_EQ(error_ca.GetCode(), error_code);
   ASSERT_EQ(error_ca.GetLine(), line_number);
   ASSERT_EQ(error_ca.GetNearString(), near_string);
+  ASSERT_EQ(error_ca.GetExpectedString(), expected_string);
   // move constructor
   yalpconf::Error error_mc(std::move(error));
   ASSERT_EQ(error.GetCode(), error_code_none);
   ASSERT_EQ(error.GetLine(), line_number_none);
   ASSERT_EQ(error.GetNearString(), near_string_none);
+  ASSERT_EQ(error.GetExpectedString(), expected_string_none);
   ASSERT_EQ(error_mc.GetCode(), error_code);
   ASSERT_EQ(error_mc.GetLine(), line_number);
   ASSERT_EQ(error_mc.GetNearString(), near_string);
+  ASSERT_EQ(error_mc.GetExpectedString(), expected_string);
   // move assigment
   yalpconf::Error error_ma;
   ASSERT_EQ(error_ma.GetCode(), error_code_none);
   ASSERT_EQ(error_ma.GetLine(), line_number_none);
   ASSERT_EQ(error_ma.GetNearString(), near_string_none);
+  ASSERT_EQ(error_ma.GetExpectedString(), expected_string_none);
   error_ma = std::move(error_mc);
   ASSERT_EQ(error_mc.GetCode(), error_code_none);
   ASSERT_EQ(error_mc.GetLine(), line_number_none);
   ASSERT_EQ(error_mc.GetNearString(), near_string_none);
+  ASSERT_EQ(error_mc.GetExpectedString(), expected_string_none);
   ASSERT_EQ(error_ma.GetCode(), error_code);
   ASSERT_EQ(error_ma.GetLine(), line_number);
   ASSERT_EQ(error_ma.GetNearString(), near_string);
+  ASSERT_EQ(error_ma.GetExpectedString(), expected_string);
 }
 
 TEST(ErrorTests, TestMethods) {
@@ -101,11 +126,14 @@ TEST(ErrorTests, TestMethods) {
   const auto error_int = 
       static_cast<std::underlying_type_t<yalpconf::ErrorCode>>(error_code);
   const size_t line_number = 100;
-  const std::string near_string { "test" };
-  yalpconf::Error error = yalpconf::Error(error_code, line_number, near_string);
+  const std::string near_string { "near" };
+  const std::string expected_string { "expected" };
+  yalpconf::Error error = yalpconf::Error(error_code, line_number, 
+      near_string, expected_string);
   ASSERT_EQ(error.GetCode(), error_code);
   ASSERT_EQ(error.GetCodeInt(), error_int);
   ASSERT_EQ(error.GetLine(), line_number);
   ASSERT_EQ(error.GetNearString(), near_string);
+  ASSERT_EQ(error.GetExpectedString(), expected_string);
 }
 
