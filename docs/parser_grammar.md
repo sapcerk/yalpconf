@@ -24,15 +24,21 @@ Lexical elements and patters described in file lexical_analyzer_patterns.md.
 
 ## Configuration Structure
 
-\<configuration-file\> ::=  '{' \<settings-list\> '}' | \<settings-list\>
+\<configuration-file\> ::= \<object\> | \<settings-list\>?
 
-\<settings-list\> ::= \<setting\> ((',' | ';')? \<setting\>)*
+\<object\> ::= '{' \<settings-list\>? '}'
+
+\<settings-list\> ::= \<setting\>? (\<item-separators\> \<setting\>?)*
 
 \<setting\> ::= \<setting-name\> '=' \<setting-value\>
 
- \<setting-value\> ::=  \<value\> | '{' \<settings-list\> '}' |  '[' \<value-list\> ']'
+ \<setting-value\> ::=  \<value\> | \<object\> |  \<array\>
 
-\<value-list\> ::= \<value\> ((',' | ';')? \<value\>)*
+\<array\> ::= '[' \<values-list\>? ']'
+
+\<values-list\> ::= \<value\>? (\<item-separators\> \<value\>?)*
+
+\<item-separators\> ::= ',' | ';'
 
 \<value\> ::= \<decimal-integer\> | 
 
